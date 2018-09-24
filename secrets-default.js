@@ -1,0 +1,2 @@
+SIGNATURE = "";
+API_KEY = "";
