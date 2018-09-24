@@ -1,2 +1,5 @@
 SIGNATURE = "";
-API_KEY = "";
+UNSPLASH_API_KEY = "";
+FONTS_API_KEY = ""
+
+module.exports = { UNSPLASH_API_KEY, FONTS_API_KEY, SIGNATURE }
