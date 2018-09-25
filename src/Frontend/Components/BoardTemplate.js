@@ -1,16 +1,14 @@
 import React from 'react';
+import BoardSquare from './BoardSquare';
+
+let squares = [];
+for (let i = 1; i < 10; i++) {
+  squares.push(<BoardSquare key={i} number={i}/>)
+}
 
 let BoardTemplate = () => 
   <div className='board'>
-    <div className='board-square'>1</div>
-    <div className='board-square'>2</div>
-    <div className='board-square'>3</div>
-    <div className='board-square'>4</div>
-    <div className='board-square'>5</div>
-    <div className='board-square'>6</div>
-    <div className='board-square'>7</div>
-    <div className='board-square'>8</div>
-    <div className='board-square'>9</div>
+    {squares}
   </div>
 
 export default BoardTemplate;
