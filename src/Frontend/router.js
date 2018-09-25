@@ -11,7 +11,7 @@ let Router = () =>
       <Switch>
         <Route exact path='/home' component={HomeScreen} />
         {/* <Route path='/login' component={LoginScreen}/> */}
-        <Route path='/search' component={ImageSearchScreen}/>
+        <Route exact path='/search/:query' component={ImageSearchScreen}/>
         <Route path='/create' component={CreationScreen}/>
       </Switch>
     </div>
