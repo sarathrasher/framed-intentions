@@ -4,6 +4,7 @@ const fetch = require('node-fetch');
 let fetchImages = (req, res) => {
   console.log(req)
   let query = "dogs";
+  // let query = (req.url.split('/').slice(-1))[0];
   let fetchPromise = fetch(`https://api.unsplash.com/search/photos/?page=1&per_page=9&query=${query}&orientation=squarish&client_id=${UNSPLASH_API_KEY}`)
   .then(response => {
   return response.json();
