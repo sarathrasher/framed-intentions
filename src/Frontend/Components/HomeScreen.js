@@ -1,11 +1,11 @@
 import React from 'react';
 import BoardTemplate from './BoardTemplate';
-import ImageSearchForm from './ImageSearchForm'
+import SearchBarFormContainer from './SearchBarFormContainer';
 
 let HomeScreen = () =>
   <div class='home-page'>
     <h1 className='title'>Framed Intentions</h1>
-    <ImageSearchForm />
+    < SearchBarFormContainer />
     <BoardTemplate />
   </div>
 
