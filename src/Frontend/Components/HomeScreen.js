@@ -5,7 +5,7 @@ import SearchBarFormContainer from './SearchBarFormContainer';
 let HomeScreen = () =>
   <div class='home-page'>
     <h1 className='title'>Framed Intentions</h1>
-    < SearchBarFormContainer />
+    <SearchBarFormContainer />
     <BoardTemplate />
   </div>
 

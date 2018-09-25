@@ -1,14 +1,11 @@
 import React from 'react';
 
-
-let ImageSearchBar = () => {
+const ImageSearchBar = (props) => {
   return (
-    <div className="input-group md-form form-sm form-2 pl-0">
-      <input className="form-control my-0 py-1 cyan-border" type="submit" placeholder="Search" aria-label="Search"></input>
-      <div className="input-group-append">
-        <span className="input-group-text cyan lighten-2" id="basic-text1"><i className="fa fa-search text-grey" aria-hidden="true"></i></span>
-      </div>
-    </div>
+    <form className="input-group md-form form-sm form-2 pl-0" onSubmit={props.searchImages}>
+      <input type="text" placeholder="Search" value={props.newInput} onChange={props.handleNewInput} required={true}/>
+      <button type='submit' value="Search"><i></i></button>
+    </form>
     )
 }
 
