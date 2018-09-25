@@ -7,8 +7,10 @@ for (let i = 1; i < 10; i++) {
 }
 
 let BoardTemplate = () => 
-  <div className='board'>
-    {squares}
+  <div className='board-container'>
+    <div className='board'>
+      {squares}
+    </div>
   </div>
 
 export default BoardTemplate;
