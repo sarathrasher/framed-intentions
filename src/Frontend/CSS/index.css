@@ -23,18 +23,10 @@
   margin: 1em auto 1em auto;
   width: 50vh;
   height: 50vh;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1vh;
-  grid-template-rows: repeat(3, 1fr);
   border: 1px solid black;
   padding: 4vh;
 }
 
-.board-square {
-  border: 1px solid black;
-  text-align: center;
-}
 
 .sidebar-image {
   width: 7em;
@@ -46,7 +38,6 @@
 .side-bar {
   width: 53vh;
   margin: 1em;
-  /* padding: 1vh; */
   display: flex;
   overflow-x: auto;
 }
