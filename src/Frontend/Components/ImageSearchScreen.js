@@ -6,16 +6,14 @@ class ImageSearchScreen extends React.Component {
     super(props);
   }
   componentDidMount() {
-    let query = this.props.match.params.query
-    fetch(`/search/${query}`, {
+    let query = this.props.match.params.query;
+    fetch(`/api/search/${query}`, {
           method: "GET", 
-              headers: {
-                "content-type": "application/json"
-              },
-              redirect: "follow", 
-              referrer: "no-referrer", 
+          headers: {
+            Accept: 'application/json'
+          },
         })
-        .then(response => console.log(response))
+        .then(data => console.log(data))
         .catch(err => console.log(err))
       }
  render() {

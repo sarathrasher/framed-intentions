@@ -1,6 +1,5 @@
 import React from 'react';
 import ImageSearchBar from './ImageSearchBar';
-import { connect } from 'react-redux';
 
 class SearchBarFormContainer extends React.Component {
   constructor(props) {
@@ -11,7 +10,6 @@ class SearchBarFormContainer extends React.Component {
   }
   render() {
     let searchImages = (event) => {
-      console.log(this.props);
       event.preventDefault();
       let input = event.target.children[0].value;
       this.props.history.push(`/search/${input}`);
@@ -22,5 +20,4 @@ class SearchBarFormContainer extends React.Component {
     }
 }
 
-// let SmartSearchBarFormContainer = connect(state => state)(SearchBarFormContainer)
 export default SearchBarFormContainer;
