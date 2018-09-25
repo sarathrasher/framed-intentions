@@ -10,7 +10,7 @@ fetch(`https://api.unsplash.com/search/photos/?page=1&per_page=9&query=${query}&
   .then(products => products.results)
   .then(results => results.map(result => {
     return (
-      { id: result.id, raw: result.urls.raw, full: result.urls.full, regular: result.urls.regular, small: result.urls.small, thumb: result.urls.thumb }
+      { id: result.id, rawURL: result.urls.raw }
     )
   })).then(resultsObjects => console.log(resultsObjects))
   .catch(err => console.log(err));
