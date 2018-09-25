@@ -28,6 +28,7 @@ class LoginForm extends Component {
         </label>
         <input type="text" 
           className="signup-email-input" 
+          placeholder="enter e-mail"
           name="email" 
           onChange={this.handleChange}
         />
@@ -37,6 +38,7 @@ class LoginForm extends Component {
         </label>
         <input type="password"
           className="signup-password-input"
+          placeholder="enter password"
           name="password" 
           onChange={this.handleChange}/>
         

@@ -4,6 +4,7 @@ import './Frontend/CSS/index.css';
 import Router from './Frontend/router';
 import registerServiceWorker from './Frontend/registerServiceWorker';
 import store from './Frontend/store';
+import LoginScreen from './Frontend/LoginScreen'
 import { Provider } from 'react-redux';
 
 let app = 
@@ -11,5 +12,5 @@ let app =
     <Router />
   </Provider>
 
-ReactDOM.render(app, document.getElementById('root'));
+ReactDOM.render(<LoginScreen />, document.getElementById('root'));
 registerServiceWorker();
