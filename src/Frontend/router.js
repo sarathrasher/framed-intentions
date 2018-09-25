@@ -1,5 +1,5 @@
 import React from 'react'
-import { HashRouter, Route, NavLink, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import HomeScreen from './Components/HomeScreen';
 import ImageSearchScreen from './Components/ImageSearchScreen';
 import CreationScreen from './Components/CreationScreen'
