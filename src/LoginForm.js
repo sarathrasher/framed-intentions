@@ -1,37 +1,5 @@
 import React, { Component } from 'react';
 
-let LoginForm = (props) => (
-  <form className="signup-form"
-    onSubmit = { (event) => {
-      event.preventDefault();
-// add function for submission
-    }}>
-
-    <h3 className="signup-account">
-      Signup for an account:
-    </h3>
-    <label className="signup-account-email">
-      <p>Email</p>
-      <input 
-        type="email" 
-        className="signup-email-input" 
-        value="" required />
-    </label>
-
-    <label className="signup-password">
-      <p>Password</p>
-      <input 
-        type="password" 
-        className="signup-password-input" 
-        required />
-    </label>
-  
-    <button type="submit" 
-      className="signup-submit-button">
-      Sign Up</button>
-</form>
-)
-
 class LoginForm extends Component {
   constructor () {
     super();
@@ -43,7 +11,10 @@ class LoginForm extends Component {
   }
 
   handleChange(event) {
-    
+    this.setState({ 
+      [event.target.name]: event.target.value
+    })
+
   }
   render () {
     return (
@@ -58,6 +29,7 @@ class LoginForm extends Component {
         <input type="text" 
           className="signup-email-input" 
           name="email" 
+          onChange={this.handleChange}
         />
         
         <label className="signup-account-password">
@@ -65,7 +37,8 @@ class LoginForm extends Component {
         </label>
         <input type="password"
           className="signup-password-input"
-          name="password" />
+          name="password" 
+          onChange={this.handleChange}/>
         
       </form>
     );
