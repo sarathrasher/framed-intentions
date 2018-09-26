@@ -1,17 +1,16 @@
 import React from 'react';
-import InteractWrapper from './InteractWrapper'
-import InteractiveImages from './InteractiveImages';
-import dropzoneOptions from '../Actions/dropzoneOptions'
+import BoardSquare from './BoardSquare';
 
-let BoardTemplate = (props) => 
-  <InteractWrapper className='board-container dropzone'
-  dropzone 
-  dropzoneOptions={dropzoneOptions}>
+let squares = [];
+for (let i = 1; i < 10; i++) {
+  squares.push(<BoardSquare key={i} number={i}/>)
+}
+
+let BoardTemplate = () => 
+  <div className='board-container'>
     <div className='board'>
-      {props.images.map(image =>
-        <InteractiveImages image={image}/>
-      )}
+      {squares}
     </div>
-  </InteractWrapper>
+  </div>
 
 export default BoardTemplate;

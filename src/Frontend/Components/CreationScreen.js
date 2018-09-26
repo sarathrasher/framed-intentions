@@ -1,5 +1,5 @@
 import React from 'react';
-import BoardTemplate from './BoardTemplate';
+import CreationBoardTemplate from './CreationBoardTemplate';
 import ImageSearchForm from './ImageSearchForm'
 import CreationSideBar from './CreationSideBar';
 
@@ -37,7 +37,7 @@ let CreationScreen = (props) =>
     <ImageSearchForm />
     <div className='creation-main'>
       {/* <CreationSideBar images={images} /> */}
-      <BoardTemplate images={images} />
+      <CreationBoardTemplate images={images} />
     </div>
 
   </div>
