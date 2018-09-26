@@ -1,7 +1,6 @@
 import React from 'react';
 import CreationBoardTemplate from './CreationBoardTemplate';
-import ImageSearchForm from './ImageSearchForm'
-import CreationSideBar from './CreationSideBar';
+import SearchBarFormContainer from './SearchBarFormContainer'
 
 let images = [ { id: 'WphP036Zuvg',
 description: 'person sitting on rock beside of brindle through sea waves crashing on rock',
@@ -34,12 +33,11 @@ smallURL: 'https://images.unsplash.com/photo-1537175918375-102d018ce3a8?ixlib=rb
 let CreationScreen = (props) =>
   <div className='home-page'>
     <h1 className='title'>Framed Intentions</h1>
-    <ImageSearchForm />
+    <SearchBarFormContainer {...props} />
     <div className='creation-main'>
       {/* <CreationSideBar images={images} /> */}
       <CreationBoardTemplate images={images} />
     </div>
-
   </div>
    
 export default CreationScreen;
