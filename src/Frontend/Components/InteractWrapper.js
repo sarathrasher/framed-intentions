@@ -7,9 +7,11 @@ export default class InteractWrapper extends Component {
 
 	static defaultProps = {
 		draggable: false,
-		resizable: false,
+    resizable: false,
+    dropzone: false,
 		draggableOptions: {},
-		resizableOptions: {}
+    resizableOptions: {},
+    dropzoneOptions: {},
 	}
 
 	render() {
@@ -31,6 +33,7 @@ export default class InteractWrapper extends Component {
 
 	setInteractions() {
 		if (this.props.draggable) this.interact.draggable(this.props.draggableOptions)
-		if (this.props.resizable) this.interact.resizable(this.props.resizableOptions)
+    if (this.props.resizable) this.interact.resizable(this.props.resizableOptions)
+    if (this.props.dropzoneOptions) this.interact.dropzone(this.props.dropzoneOptions)
 	}
 }

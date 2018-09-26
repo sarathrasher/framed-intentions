@@ -1,16 +1,50 @@
 import React from 'react';
-// import BoardSquare from './BoardSquare';
+import InteractWrapper from './InteractWrapper'
 
-// let squares = [];
-// for (let i = 1; i < 10; i++) {
-//   squares.push(<BoardSquare key={i} number={i}/>)
-// }
+let dropzoneOptions = {
+  // only accept elements matching this CSS selector
+  accept: '#yes-drop',
+  // Require a 75% element overlap for a drop to be possible
+  overlap: 0.75,
+
+  // listen for drop related events:
+
+  ondropactivate: function (event) {
+    // add active dropzone feedback
+    event.target.classList.add('drop-active');
+  },
+  ondragenter: function (event) {
+    var draggableElement = event.relatedTarget,
+        dropzoneElement = event.target;
+
+    // feedback the possibility of a drop
+    dropzoneElement.classList.add('drop-target');
+    draggableElement.classList.add('can-drop');
+    draggableElement.textContent = 'Dragged in';
+  },
+  ondragleave: function (event) {
+    // remove the drop feedback style
+    event.target.classList.remove('drop-target');
+    event.relatedTarget.classList.remove('can-drop');
+    event.relatedTarget.textContent = 'Dragged out';
+  },
+  ondrop: function (event) {
+    event.relatedTarget.textContent = 'Dropped';
+  },
+  ondropdeactivate: function (event) {
+    // remove active dropzone feedback
+    event.target.classList.remove('drop-active');
+    event.target.classList.remove('drop-target');
+  }
+};
 
 let BoardTemplate = () => 
-  <div className='board-container'>
+  <InteractWrapper className='board-container dropzone'
+  dropzone 
+  dropzoneOptions={dropzoneOptions}>
     <div className='board'>
       {/* {squares} */}
     </div>
-  </div>
+  </InteractWrapper>
 
 export default BoardTemplate;

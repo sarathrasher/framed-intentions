@@ -19,7 +19,7 @@ const draggableOptions = {
   }
 }
 
-const InteractiveWrapper = (props) => 
+const InteractiveImages = (props) => 
   <InteractWrapper
     className='sidebar-image-container'
     key={props.image.id}
@@ -33,4 +33,4 @@ const InteractiveWrapper = (props) =>
   </InteractWrapper>
 
 
-export default InteractiveWrapper;
+export default InteractiveImages;

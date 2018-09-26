@@ -19,6 +19,7 @@
   height: 50vh;
   border: 1px solid black;
   padding: 4vh;
+  z-index: 0;
 }
 
 .sidebar-image-container {
