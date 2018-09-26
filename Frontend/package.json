@@ -3,12 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3",
-    "express-jwt": "^5.3.1",
-    "jsonwebtoken": "^8.3.0",
-    "node-fetch": "^2.2.0",
-    "pg-promise": "^8.4.6",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
@@ -21,6 +15,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }, 
+  },
   "proxy": "http://localhost:3001"
 }
