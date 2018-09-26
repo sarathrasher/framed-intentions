@@ -21,6 +21,9 @@
   padding: 4vh;
 }
 
+.sidebar-image-container {
+  z-index: 1;
+}
 
 .sidebar-image {
   width: 7em;

@@ -1,17 +1,11 @@
 import React from 'react';
+import InteractiveWrapper from './InteractiveWrapper'
 
 let CreationSideBar = (props) =>
   <div className='side-bar'>
     {props.images.map(image =>
-      <div className='sidebar-image-container'
-      key={image.id}>
-      <img 
-        className='sidebar-image'
-        src={image.smallURL}
-        alt={image.description}></img>
-      </div>
+      <InteractiveWrapper image={image}/>
     )}
   </div>
-
 
 export default CreationSideBar
