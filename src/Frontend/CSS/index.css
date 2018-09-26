@@ -23,7 +23,6 @@
 }
 
 .sidebar-image-container {
-  z-index: 1;
   box-sizing: border-box;
   position: absolute;
 }
