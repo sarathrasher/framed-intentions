@@ -4,7 +4,7 @@ import SearchBoardTemplate from './SearchBoardTemplate';
 
 let SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
-console.log(process.env);
+// console.log(process.env);
 
 class ImageSearchScreen extends React.Component {
   constructor(props) {
@@ -27,11 +27,15 @@ class ImageSearchScreen extends React.Component {
         .catch(err => console.log(err))
       }
  render() {
-  return (
-    <div className='image-search-screen'>
-      <SearchBarFormContainer history={this.props.history}/>
-      <SearchBoardTemplate images={this.state.imageSearchResults} />
-    </div>)
+  if (this.state.imageSearchResults.length > 0) {
+    return (
+      <div className='image-search-screen'>
+        <SearchBarFormContainer history={this.props.history}/>
+        <SearchBoardTemplate images={this.state.imageSearchResults} />
+      </div>)
+  } else {
+    return null
+  }
  }
 }
 
