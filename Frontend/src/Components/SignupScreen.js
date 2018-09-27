@@ -3,7 +3,7 @@ import SignupForm from './SignupForm';
 
  let SignupScreen = (props) => (
   <div className="signup-form-container">
-    <SignupForm />
+    <SignupForm {...props}/>
   </div>
 )
  export default SignupScreen; 

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 let SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
  class SignupForm extends Component {
-  constructor () {
-    super();
+  constructor (props) {
+    super(props);
     this.state = {
       email: '',
       password: ''
@@ -27,8 +27,10 @@ let SERVER_URL = process.env.REACT_APP_SERVER_URL;
       .then(responseObj => 
         responseObj.json())
 
-      .then(data => 
-        console.log(data))
+      .then(data => {
+        this.props.history.push('/create');
+        window.localStorage.setItem('token', data.token);
+      })
     }
     return (
       <form className="signup-form">
