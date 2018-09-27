@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 let SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
  class SignupForm extends Component {
@@ -30,6 +31,10 @@ let SERVER_URL = process.env.REACT_APP_SERVER_URL;
       .then(data => {
         this.props.history.push('/create');
         window.localStorage.setItem('token', data.token);
+        this.props.dispatch({
+          type: 'STORE_USER_INFO',
+          data: data,
+        })
       })
     }
     return (
@@ -68,4 +73,4 @@ let SERVER_URL = process.env.REACT_APP_SERVER_URL;
     );
   }
 }
- export default SignupForm; 
+ export default connect(state => state)(SignupForm); 
