@@ -1,20 +1,20 @@
-const toggleFromSavedImages = (oldState, action) => {
-  let savedImageIds = oldState.savedImages.map(image => image.id)
+const toggleFromUserBoard = (oldState, action) => {
+  let savedImageIds = oldState.userBoard.map(image => image.id)
   if (savedImageIds.includes(action.image.id)) {
     return ({
       ...oldState, 
-      savedImages: oldState.savedImages.filter(image => image.id !== action.image.id)
+      userBoard: oldState.userBoard.filter(image => image.id !== action.image.id)
     })
   } else {
       return {
           ...oldState, 
-          savedImages: oldState.savedImages.concat([action.image])
+          userBoard: oldState.userBoard.concat([action.image])
       }
   }
 }
 
 let reducers = {
-  "TOGGLE_FROM_SAVED_IMAGES": toggleFromSavedImages
+  "TOGGLE_FROM_USER_BOARD": toggleFromUserBoard
 }
 
 let reducer = (oldState, action) => {

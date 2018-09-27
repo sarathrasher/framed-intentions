@@ -2,7 +2,6 @@ import { createStore } from 'redux';
 import reducer from './Reducer/reducer'
 
 let initialState = {
-  savedImages: [],
   userToken: '',
   userBoard: []
 }
