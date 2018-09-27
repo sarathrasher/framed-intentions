@@ -49,7 +49,7 @@ app.use(express.static("../Frontend/build"));
 app.use(allowCORS);
 app.use(publicRouter);
 // app.post('/authenticate', authenticate);
-app.post('/signup', signup);
+publicRouter.post('/signup', signup);
 app.use('/api', authRouter);
 authRouter.get('/search/:query', fetchImages);
 
