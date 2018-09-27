@@ -69,7 +69,7 @@ let board = [
 
 let initialState = {
   userToken: '',
-  userBoard: {board}
+  userBoard: []
 }
 
 let store = createStore(
