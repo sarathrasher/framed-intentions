@@ -11,7 +11,9 @@ let CreationBoardTemplate = (props) =>
   userBoard={props.userBoard}>
     <div className='board'>
       {props.userBoard.map(image =>
-        <InteractiveImages image={image}/>
+        <InteractiveImages image={image}
+          onDragEnd={(x, y) => props.dispatch({type: 'UPDATE_LOCATION', id: image.id, x: x, y: y})}
+          onResizeEnd={(width, height) => console.log(width, height)} />
       )}
     </div>
   </InteractWrapper>
