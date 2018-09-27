@@ -9,11 +9,12 @@
 // }
 
 let updateLocation = (oldState, action) => {
-  oldState
+  let image = oldState.userBoard.find(image => image.action.id === oldState.userBoard.id)
 }
 
 let updateSize = (oldState, action) => {
-  
+  let image = oldState.userBoard.find(image => image.action.id === oldState.userBoard.id)
+  image.location = [action.x, action.y]
 }
 
 let reducers = {
