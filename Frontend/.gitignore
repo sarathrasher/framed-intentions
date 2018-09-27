@@ -6,6 +6,11 @@
 # testing
 /coverage
 
+# environment
+env.js
+.env.production
+.env.development
+
 # misc
 .DS_Store
 .env.local
@@ -14,6 +19,7 @@
 .env.production.local
 secrets.js
 secrets
+env.js
 
 npm-debug.log*
 yarn-debug.log*

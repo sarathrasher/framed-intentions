@@ -1,6 +1,7 @@
 import React, { Component, cloneElement } from 'react'
 import { findDOMNode } from 'react-dom'
-
+import draggableOptions from '../Actions/dragAndDrop';
+import resizableOptions from '../Actions/resize'
 import interact from 'interactjs'
 
 export default class InteractWrapper extends Component {
@@ -32,8 +33,51 @@ export default class InteractWrapper extends Component {
 	}
 
 	setInteractions() {
-		if (this.props.draggable) this.interact.draggable(this.props.draggableOptions)
-    if (this.props.resizable) this.interact.resizable(this.props.resizableOptions)
-    if (this.props.dropzoneOptions) this.interact.dropzone(this.props.dropzoneOptions)
-	}
+		if (this.props.draggable) {
+			this.interact.draggable({...draggableOptions, onmove: event => {
+			const target = event.target
+			target.style.zIndex = '1';
+		// keep the dragged position in the data-x/data-y attributes
+		const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+		const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+	
+		// translate the element
+		target.style.webkitTransform =
+		target.style.transform =
+			'translate(' + x + 'px, ' + y + 'px)'
+	
+		// update the posiion attributes
+		target.setAttribute('data-x', x);
+		target.setAttribute('data-y', y);
+		},
+		onend: event => {
+			const target = event.target
+			target.style.zIndex = '0';
+			const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+			const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+			console.log(x, y);
+			this.props.onDragEnd(x, y);
+		}})
+	} if (this.props.resizable) this.interact.resizable({...resizableOptions, onmove: (event) => {
+    var target = event.target,
+        x = (parseFloat(target.getAttribute('data-x')) || 0),
+        y = (parseFloat(target.getAttribute('data-y')) || 0);
+    target.style.zIndex = '1';
+    // update the element's style
+    target.style.width  = event.rect.width + 'px';
+    target.style.height = event.rect.height + 'px';
+  
+    // translate when resizing from top or left edges
+    x += event.deltaRect.left;
+    y += event.deltaRect.top;
+  
+    target.style.webkitTransform = target.style.transform =
+        'translate(' + x + 'px,' + y + 'px)';  
+  },
+  onend: event => {
+    const target = event.target;
+		target.style.zIndex = '0';
+		this.props.onResizeEnd(event.interaction.resizeRects.previous.width, event.interaction.resizeRects.previous.height)
+  }
+	})}
 }
