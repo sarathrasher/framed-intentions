@@ -6,6 +6,18 @@ import interact from 'interactjs'
 
 export default class InteractWrapper extends Component {
 
+	constructor(props) {
+		super(props);
+		this.state = {
+			styles: {
+				top: this.props.x,
+				left: this.props.y,
+				width: this.props.width,
+				height: this.props.height
+			}
+		}
+	}
+
 	static defaultProps = {
 		draggable: false,
     resizable: false,
@@ -18,13 +30,21 @@ export default class InteractWrapper extends Component {
 	render() {
 		return cloneElement(this.props.children, {
 			ref: node => this.node = node,
-			draggable: false
+			draggable: false, style: this.state.styles
 		})
 	}
 
 	componentDidMount() {
 		this.interact = interact(findDOMNode(this.node))
 		this.setInteractions()
+		// this.setState({
+		// 	styles: {
+		// 		top: computeTopWith(this.refs.node),
+		// 		left: computeLeftWith(this.refs.node),
+		// 		width: computeWidthWith(this.refs.node),
+		// 		height: computeHeightWith(this.refs.node),
+		// 	}
+		// })
 	}
 
 	componentWillReceiveProps() {
