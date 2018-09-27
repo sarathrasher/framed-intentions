@@ -1,4 +1,4 @@
-const { UNSPLASH_API_KEY } = require('./secrets');
+const { UNSPLASH_API_KEY } = require('./secrets.js');
 const fetch = require('node-fetch');
 
 let fetchImages = (req, res) => {
