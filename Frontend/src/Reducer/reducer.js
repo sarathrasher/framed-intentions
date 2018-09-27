@@ -12,23 +12,27 @@ const toggleFromUserBoard = (oldState, action) => {
       }
   }
 }
-// let updateCart = (oldState, action) => {
-//   let newCart = 
-//     oldState.cartItems.concat([action.product])
-//   console.log(newCart);
-//   return {
-//     ...oldState,
-//     cartItems: newCart
-//   }
-// }
 
 let updateLocation = (oldState, action) => {
-  let image = oldState.userBoard.find(image => image.action.id === oldState.userBoard.id)
+  let image = oldState.userBoard.find(image => image.id === action.id)
+  image.location = [action.x, action.y]
+  let newBoard = oldState.userBoard.filter(image => image.id !== action.id)
+  return ({
+    ...oldState,
+    userBoard: newBoard.concat([image])
+  }
+  )
 }
 
 let updateSize = (oldState, action) => {
-  let image = oldState.userBoard.find(image => image.action.id === oldState.userBoard.id)
-  image.location = [action.x, action.y]
+  let image = oldState.userBoard.find(image => image.id === action.id)
+  image.size = [action.width, action.height]
+  let newBoard = oldState.userBoard.filter(image => image.id !== action.id)
+  return ({
+    ...oldState,
+    userBoard: newBoard.concat([image])
+  }
+  )
 }
 
 let reducers = {
