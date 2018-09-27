@@ -8,6 +8,8 @@
 
 # environment
 env.js
+.env.production
+.env.development
 
 # misc
 .DS_Store

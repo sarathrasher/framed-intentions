@@ -1,7 +1,10 @@
 import React from 'react';
 import SearchBarFormContainer from './SearchBarFormContainer';
 import SearchBoardTemplate from './SearchBoardTemplate';
-import { SERVER_URL } from '../env'
+
+let SERVER_URL = process.env.REACT_APP_SERVER_URL;
+
+console.log(process.env);
 
 class ImageSearchScreen extends React.Component {
   constructor(props) {
