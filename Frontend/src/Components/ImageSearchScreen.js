@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchBarFormContainer from './SearchBarFormContainer';
+import SearchBoardTemplate from './SearchBoardTemplate';
 
 class ImageSearchScreen extends React.Component {
   constructor(props) {
@@ -25,14 +26,7 @@ class ImageSearchScreen extends React.Component {
   return (
     <div className='image-search-screen'>
       <SearchBarFormContainer history={this.props.history}/>
-      {this.state.imageSearchResults.map(image => {
-        return (
-          <div key={image.id}>
-            <p>{image.description}</p>
-            <img src={image.smallURL} alt={image.description}></img>
-          </div>
-        )
-      })}
+      <SearchBoardTemplate images={this.state.imageSearchResults} />
     </div>)
  }
 }
