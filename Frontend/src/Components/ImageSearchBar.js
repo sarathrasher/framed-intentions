@@ -4,7 +4,7 @@ const ImageSearchBar = (props) => {
   return (
     <form className="input-group md-form form-sm form-2 pl-0" onSubmit={props.searchImages}>
       <input type="text" placeholder="Search" value={props.newInput} onChange={props.handleNewInput} required={true}/>
-      <button type='submit' value="Search"><i></i></button>
+      <button type='submit' value="Search"><i className="fa fa-search" aria-hidden="true"></i></button>
     </form>
     )
 }

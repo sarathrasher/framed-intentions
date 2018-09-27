@@ -8,7 +8,6 @@ import { connect } from 'react-redux'
 const InteractiveImages = (props) => 
   <InteractWrapper
     className='sidebar-image-container'
-    key={props.image.id}
     draggable
     draggableOptions={draggableOptions}
     resizable

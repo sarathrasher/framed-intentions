@@ -1,6 +1,10 @@
 import React from 'react';
 import SearchBarFormContainer from './SearchBarFormContainer';
-import { SERVER_URL } from '../env'
+import SearchBoardTemplate from './SearchBoardTemplate';
+
+let SERVER_URL = process.env.REACT_APP_SERVER_URL;
+
+console.log(process.env);
 
 class ImageSearchScreen extends React.Component {
   constructor(props) {
@@ -26,14 +30,7 @@ class ImageSearchScreen extends React.Component {
   return (
     <div className='image-search-screen'>
       <SearchBarFormContainer history={this.props.history}/>
-      {this.state.imageSearchResults.map(image => {
-        return (
-          <div key={image.id}>
-            <p>{image.description}</p>
-            <img src={image.smallURL} alt={image.description}></img>
-          </div>
-        )
-      })}
+      <SearchBoardTemplate images={this.state.imageSearchResults} />
     </div>)
  }
 }
