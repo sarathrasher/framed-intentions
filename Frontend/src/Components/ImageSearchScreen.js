@@ -1,6 +1,10 @@
 import React from 'react';
 import SearchBarFormContainer from './SearchBarFormContainer';
-import { SERVER_URL } from '../env'
+import SearchBoardTemplate from './SearchBoardTemplate';
+
+let SERVER_URL = process.env.REACT_APP_SERVER_URL;
+
+// console.log(process.env);
 
 class ImageSearchScreen extends React.Component {
   constructor(props) {
@@ -11,7 +15,7 @@ class ImageSearchScreen extends React.Component {
   }
   componentDidMount() {
     let query = this.props.match.params.query;
-    fetch(`${SERVER_URL}api/search/${query}`, {
+    fetch(`${SERVER_URL}/api/search/${query}`, {
           method: "GET", 
           headers: {
             Accept: 'application/json'
@@ -23,18 +27,15 @@ class ImageSearchScreen extends React.Component {
         .catch(err => console.log(err))
       }
  render() {
-  return (
-    <div className='image-search-screen'>
-      <SearchBarFormContainer history={this.props.history}/>
-      {this.state.imageSearchResults.map(image => {
-        return (
-          <div key={image.id}>
-            <p>{image.description}</p>
-            <img src={image.smallURL} alt={image.description}></img>
-          </div>
-        )
-      })}
-    </div>)
+  if (this.state.imageSearchResults.length > 0) {
+    return (
+      <div className='image-search-screen'>
+        <SearchBarFormContainer history={this.props.history}/>
+        <SearchBoardTemplate images={this.state.imageSearchResults} />
+      </div>)
+  } else {
+    return null
+  }
  }
 }
 

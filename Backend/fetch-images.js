@@ -1,4 +1,4 @@
-const { UNSPLASH_API_KEY } = require('./secrets');
+const { UNSPLASH_API_KEY } = require('./secrets.js');
 const fetch = require('node-fetch');
 
 let fetchImages = (req, res) => {
@@ -14,7 +14,7 @@ let fetchImages = (req, res) => {
     return products.results})
   .then(results => results.map(result => {
     return (
-      { id: result.id, description: result.description, smallURL: result.urls.small }
+      { id: result.id, description: result.description, smallURL: result.urls.small, location: [0,0], size: [350, 350] }
     )
   })).then(resultsObjects => res.send(JSON.stringify(resultsObjects)))
   .catch(err => res.send(err));
