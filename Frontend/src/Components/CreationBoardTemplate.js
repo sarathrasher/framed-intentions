@@ -9,7 +9,7 @@ let CreationBoardTemplate = (props) =>
   dropzoneOptions={dropzoneOptions}>
     <div className='board'>
       {props.images.map(image =>
-        <InteractiveImages image={image}/>
+        <InteractiveImages image={image} key={image.id}/>
       )}
     </div>
   </InteractWrapper>

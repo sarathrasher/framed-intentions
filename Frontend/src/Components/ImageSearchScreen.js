@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBarFormContainer from './SearchBarFormContainer';
 import SearchBoardTemplate from './SearchBoardTemplate';
+import { SERVER_URL } from '../../../Backend/secrets'
 
 class ImageSearchScreen extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class ImageSearchScreen extends React.Component {
   }
   componentDidMount() {
     let query = this.props.match.params.query;
-    fetch(`http://localhost:3001/api/search/${query}`, {
+    fetch(`${SERVER_URL}api/search/${query}`, {
           method: "GET", 
           headers: {
             Accept: 'application/json'

@@ -7,7 +7,6 @@ import resizableOptions from '../Actions/resize'
 const InteractiveImages = (props) => 
   <InteractWrapper
     className='sidebar-image-container'
-    key={props.image.id}
     draggable
     draggableOptions={draggableOptions}
     resizable
