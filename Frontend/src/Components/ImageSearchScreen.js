@@ -11,7 +11,7 @@ class ImageSearchScreen extends React.Component {
   }
   componentDidMount() {
     let query = this.props.match.params.query;
-    fetch(`${SERVER_URL}api/search/${query}`, {
+    fetch(`${SERVER_URL}/api/search/${query}`, {
           method: "GET", 
           headers: {
             Accept: 'application/json'
