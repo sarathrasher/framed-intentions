@@ -11,21 +11,31 @@ class ImageSearchScreen extends React.Component {
     super(props);
     this.state = {
       imageSearchResults: []
+    }
   }
-  }
-  componentDidMount() {
+  fetchImages() {
     let query = this.props.match.params.query;
-    fetch(`${SERVER_URL}/api/search/${query}`, {
-          method: "GET", 
-          headers: {
-            Accept: 'application/json'
-          },
-        })
-        .then(response => response.text())
-        .then(stringResponse => JSON.parse(stringResponse))
-        .then(data => this.setState({ imageSearchResults: data}))
-        .catch(err => console.log(err))
-      }
+      fetch(`${SERVER_URL}/api/search/${query}`, {
+        method: "GET", 
+        headers: {
+          Accept: 'application/json'
+        },
+      })
+      .then(response => response.text())
+      .then(stringResponse => JSON.parse(stringResponse))
+      .then(data => this.setState({ imageSearchResults: data}))
+      .catch(err => console.log(err))
+  }
+
+  componentDidMount() {
+    this.fetchImages();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.query !== this.props.match.params.query) {
+      this.fetchImages();
+    }
+  }
  render() {
   if (this.state.imageSearchResults.length > 0) {
     return (
