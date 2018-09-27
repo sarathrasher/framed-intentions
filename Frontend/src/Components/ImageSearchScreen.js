@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchBarFormContainer from './SearchBarFormContainer';
-import { SERVER_URL } from '../../../Backend/secrets'
+import { SERVER_URL } from '../env'
 
 class ImageSearchScreen extends React.Component {
   constructor(props) {
