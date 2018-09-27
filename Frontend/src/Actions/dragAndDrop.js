@@ -1,4 +1,3 @@
-
 const draggableOptions = {
   inertia: true,
     // keep the element within the area of it's parent
@@ -26,10 +25,11 @@ const draggableOptions = {
   target.setAttribute('data-x', x);
   target.setAttribute('data-y', y);
   },
-  // onend: event => {
-  //   const target = event.target
-  //   target.style.zIndex = '0';
-  // }
+  onend: event => {
+    const target = event.target
+    target.style.zIndex = '0';
+
+  }
 }
 
 export default draggableOptions
