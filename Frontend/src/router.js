@@ -3,7 +3,7 @@ import { HashRouter, Route, Switch } from 'react-router-dom';
 import HomeScreen from './Components/HomeScreen';
 import ImageSearchScreen from './Components/ImageSearchScreen';
 import CreationScreen from './Components/CreationScreen'
-// import LoginScreen from './Components/LoginScreen';
+import SignupScreen from './Components/SignupScreen';
 
 let Router = () => 
   <HashRouter>
@@ -11,7 +11,7 @@ let Router = () =>
       <Switch>
         <Route exact path='/home' component={HomeScreen} />
         {/* <Route path='/login' component={LoginScreen}/> */}
-        {/* <Route path='/signup' component={SignupScreen}/> */}
+        <Route path='/signup' component={SignupScreen}/>
         <Route exact path='/search/:query' component={ImageSearchScreen}/>
         <Route path='/create' component={CreationScreen}/>
       </Switch>
