@@ -8,8 +8,8 @@ let CreationScreen = (props) =>
     <SearchBarFormContainer {...props} />
     <div className='creation-main'>
       {/* <CreationSideBar images={images} /> */}
-      {/* <CreationBoardTemplate images={images} /> */}
+      <CreationBoardTemplate />
     </div>
   </div>
-   
+
 export default CreationScreen;

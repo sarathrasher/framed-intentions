@@ -6,6 +6,9 @@
 # testing
 /coverage
 
+# environment
+env.js
+
 # misc
 .DS_Store
 .env.local

@@ -2,11 +2,13 @@ import React from 'react';
 import InteractWrapper from './InteractWrapper'
 import InteractiveImages from './InteractiveImages';
 import dropzoneOptions from '../Actions/dropzoneOptions'
+import { connect } from 'react-redux';
 
 let CreationBoardTemplate = (props) => 
   <InteractWrapper className='board-container dropzone'
   dropzone 
-  dropzoneOptions={dropzoneOptions}>
+  dropzoneOptions={dropzoneOptions} 
+  userBoard={props.userBoard}>
     <div className='board'>
       {props.images.map(image =>
         <InteractiveImages image={image} key={image.id}/>
@@ -14,4 +16,6 @@ let CreationBoardTemplate = (props) =>
     </div>
   </InteractWrapper>
 
-export default CreationBoardTemplate;
+let SmartCreationBoardTemplate = connect(state => ({userBoard: state.userBoard}))(CreationBoardTemplate)
+
+export default SmartCreationBoardTemplate;
