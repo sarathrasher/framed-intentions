@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 let SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
  class LoginForm extends Component {
@@ -7,7 +8,8 @@ let SERVER_URL = process.env.REACT_APP_SERVER_URL;
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      error: ''
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -18,7 +20,7 @@ let SERVER_URL = process.env.REACT_APP_SERVER_URL;
    }
   render () {
     let getUserInfoFetch = () => {
-      fetch(`http://localhost:3001/signup`, {
+      fetch(`http://localhost:3001/login`, {
         method: 'POST',
         body: JSON.stringify(this.state),
         headers:{
@@ -28,16 +30,19 @@ let SERVER_URL = process.env.REACT_APP_SERVER_URL;
       .then(responseObj => 
         responseObj.json())
 
-      .then(data => {
+      .then(data => { 
+        if (data.token) {
         this.props.history.push('/create');
         window.localStorage.setItem('token', data.token);
         this.props.dispatch({
           type: 'STORE_USER_INFO',
           data: data,
-        })
+        }) 
+        } else {this.setState({error: data.error}) }
       })
     }
     return (
+    <div>
       <form className="loginu-form">
         <p className="login-text"> 
           <h3 className="login-account">
@@ -72,8 +77,11 @@ let SERVER_URL = process.env.REACT_APP_SERVER_URL;
           > Submit </button>
         
       </form>
-      <button type="Submit"
-        onClick=
+      <Link to="/signup">Not a User Yet? Sign Up </Link>
+      <br/>
+      <label> {this.state.error}
+      </label>
+    </div>
     );
   }
 }

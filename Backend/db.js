@@ -14,11 +14,16 @@ let addNewUser = (email, password) => {
 }
 
 
-// let retrieveUser = 
+let checkUserCreds = (email, password) => {
+  return db.one('SELECT * from users \
+    WHERE email = $1 AND password = $2', 
+    [email, password]);
+}
 
 
 module.exports = {
-  addNewUser: addNewUser
+  addNewUser: addNewUser,
+  checkUserCreds: checkUserCreds
 };
 
 // addNewUser('hello@world.com', 'password')

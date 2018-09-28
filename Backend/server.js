@@ -42,6 +42,32 @@ let signup = (req, res) => {
     .catch(console.error)
 }
 
+let login = (req, res) => {
+  let email = req.body.email;
+  let password = req.body.password;
+  db.checkUserCreds(email, password)
+    .then(data =>  { console.log(data);
+        let token = jwt.sign(
+          {
+            email: email,
+            id: data.id
+          },
+          secrets.SIGNATURE,
+          {expiresIn: '7d'});
+          console.log({
+            token: token, 
+            email: email, 
+            id: data.id
+          })
+      res.send({
+        token: token, 
+        email: email, 
+        id: data.id
+      });
+  })
+    .catch( ()=> res.send({error: "Error logging in. Please try again"}))
+}
+
 
 app.use(bodyParser.json());
 
@@ -50,7 +76,9 @@ app.use(allowCORS);
 app.use(publicRouter);
 // app.post('/authenticate', authenticate);
 publicRouter.post('/signup', signup);
+publicRouter.post('/login', login);
 app.use('/api', authRouter);
 authRouter.get('/search/:query', fetchImages);
+
 
 app.listen(3001);
