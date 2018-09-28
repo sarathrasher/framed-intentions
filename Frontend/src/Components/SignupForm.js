@@ -18,7 +18,7 @@ let SERVER_URL = process.env.REACT_APP_SERVER_URL;
    }
   render () {
     let addUserFetch = () => {
-      fetch(`http://localhost:3001/signup`, {
+      fetch(`${SERVER_URL}/signup`, {
         method: 'POST',
         body: JSON.stringify(this.state),
         headers:{

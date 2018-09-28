@@ -20,7 +20,7 @@ let SERVER_URL = process.env.REACT_APP_SERVER_URL;
    }
   render () {
     let getUserInfoFetch = () => {
-      fetch(`http://localhost:3001/login`, {
+      fetch(`${SERVER_URL}/login`, {
         method: 'POST',
         body: JSON.stringify(this.state),
         headers:{
