@@ -5,3 +5,17 @@ CREATE TABLE users(
     password TEXT NOT NULL
 );
 
+CREATE TABLE board_images(
+   board_id VARCHAR(255),
+   image_id VARCHAR(255),
+   image_url VARCHAR(255),
+   location integer[],
+   size integer[],
+   type VARCHAR(255),
+   description VARCHAR(255)
+);
+
+CREATE TABLE user_boards(
+   board_id serial PRIMARY KEY NOT NULL,
+   user_id VARCHAR(255)
+);
