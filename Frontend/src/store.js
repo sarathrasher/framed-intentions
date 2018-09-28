@@ -5,7 +5,8 @@ let initialState = {
   userToken: '',
   userBoard: [],
   userId: '',
-  email: ''
+  email: '',
+  saved: false,
 }
 
 let store = createStore(

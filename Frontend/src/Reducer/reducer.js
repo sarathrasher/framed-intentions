@@ -1,3 +1,10 @@
+const savedBoard = (oldState, action) => { 
+  return {
+    ...oldState,
+    saved: true,
+  }
+}
+
 const toggleFromUserBoard = (oldState, action) => {
   let savedImageIds = oldState.userBoard.map(image => image.id)
   if (savedImageIds.includes(action.image.id)) {
@@ -19,7 +26,8 @@ let updateLocation = (oldState, action) => {
   let newBoard = oldState.userBoard.filter(image => image.id !== action.id)
   return ({
     ...oldState,
-    userBoard: newBoard.concat([image])
+    userBoard: newBoard.concat([image]),
+    saved: false
   }
   )
 }
@@ -30,7 +38,8 @@ let updateSize = (oldState, action) => {
   let newBoard = oldState.userBoard.filter(image => image.id !== action.id)
   return ({
     ...oldState,
-    userBoard: newBoard.concat([image])
+    userBoard: newBoard.concat([image]),
+    saved: false
   }
   )
 }
@@ -48,6 +57,7 @@ let reducers = {
   UPDATE_SIZE: updateSize,
   "TOGGLE_FROM_USER_BOARD": toggleFromUserBoard,
   "STORE_USER_INFO": storeUserInfo,
+  'SAVED_BOARD': savedBoard
 }
 
 let reducer = (oldState, action) => {

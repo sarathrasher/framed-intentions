@@ -10,9 +10,9 @@ let boardSaveFetch = (props) =>
       "Content-Type": "application/json"
     }
   })
-  .then(responseObj => 
+  .then(responseObj =>  
     <div class='home-screen'>
-      <CreationScreen />
+      <CreationScreen {...props} />
       <p className='saved-script'>Your board has been saved.</p>
     </div>
   )
@@ -23,6 +23,7 @@ let BoardSaveButton = (props) =>
       event.preventDefault();
       boardSaveFetch(props);
       console.log(props);
+      props.dispatch({type: 'SAVED_BOARD'})
       }
     }
     >Save Board
