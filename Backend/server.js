@@ -42,7 +42,6 @@ let signup = (req, res) => {
     .catch(console.error)
 }
 
-
 app.use(bodyParser.json());
 
 app.use(express.static("../Frontend/build"));
