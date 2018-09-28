@@ -5,7 +5,7 @@
   "main": "fetch-images.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "resetdb": "dropdb framed-app; createdb framed-app; psql -d framed-app -f schema.sql; psql -d framed-app -f seeds.sql",
+    "resetdb": "dropdb framedapp; createdb framedapp; psql -d framedapp -f schema.sql; psql -d framedapp -f seeds.sql",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },

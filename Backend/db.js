@@ -1,12 +1,7 @@
 const pgp = require('pg-promise')();
-const cn = {
-    host: 'localhost',
-    port: 5432,
-    database: 'framed-app',
-    user: 'postgres',
-    password: ''
-};
-const db = pgp(cn);
+const { DATABASE_URL } = require('./secrets');
+const dbConfig = DATABASE_URL;
+const db = pgp(dbConfig);
 
 // where sql queries will go
 
@@ -19,7 +14,7 @@ let addNewUser = (email, password) => {
 }
 
 
-let retrieveUser = 
+// let retrieveUser = 
 
 
 module.exports = {
