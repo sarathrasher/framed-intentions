@@ -10,8 +10,8 @@ class InteractiveImages extends React.Component {
     super(props);
     this.state = {
       styles: {
-        top: this.props.image.location[0],
-        left: this.props.image.location[1],
+        top: this.props.image.location[1],
+        left: this.props.image.location[0],
         width: this.props.image.size[0],
         height: this.props.image.size[1]
       }
@@ -35,6 +35,10 @@ class InteractiveImages extends React.Component {
       className='sidebar-image'
       src={this.props.image.smallURL}
       alt={this.props.image.description}
+      data-x={this.props.image.location[0]}
+      data-y={this.props.image.location[1]}
+      width={this.props.image.size[0]}
+      height={this.props.image.size[1]}
       ></img>
     </InteractWrapper>
     )
