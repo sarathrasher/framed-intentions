@@ -35,10 +35,19 @@ let updateSize = (oldState, action) => {
   )
 }
 
+let storeUserInfo = (oldState, action) => { 
+  return {
+    ...oldState, 
+    email: action.data.email,
+    id: action.data.id
+  }
+}
+
 let reducers = {
   UPDATE_LOCATION: updateLocation,
   UPDATE_SIZE: updateSize,
-  "TOGGLE_FROM_USER_BOARD": toggleFromUserBoard
+  "TOGGLE_FROM_USER_BOARD": toggleFromUserBoard,
+  "STORE_USER_INFO": storeUserInfo,
 }
 
 let reducer = (oldState, action) => {
