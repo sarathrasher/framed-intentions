@@ -22,9 +22,15 @@ let CreationBoardTemplate = (props) =>
             width: width, 
             height: height})} />
       )}
+      { props.saved 
+      ?      
+        <p className='saved-script'>Your board has been saved.</p>
+      :
+       <p className='saved-script' />
+      }
     </div>
   // </InteractWrapper>
 
-let SmartCreationBoardTemplate = connect(state => ({userBoard: state.userBoard}))(CreationBoardTemplate)
+let SmartCreationBoardTemplate = connect(state => ({userBoard: state.userBoard, saved: state.saved}))(CreationBoardTemplate)
 
 export default SmartCreationBoardTemplate;
