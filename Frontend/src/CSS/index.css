@@ -25,6 +25,14 @@
   justify-content: center;
 }
 
+.logo {
+  background-image: url('../LoginLogo.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 500px;
+}
+
 .search-board-square {
   padding: 2vh;
   text-align: center;
@@ -76,6 +84,25 @@
 .creation-main {
   display: flex;
   flex-direction: column;
+}
+
+.signup-form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.h3, h3 {
+text-align: center;
+}
+
+button {
+  text-align: left;
+  padding: 0;
 }
 
 @media (min-width: 625px) {
