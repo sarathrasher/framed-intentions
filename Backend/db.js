@@ -5,8 +5,6 @@ const db = pgp(dbConfig);
 
 // where sql queries will go
 
-
-
 let addNewUser = (email, password) => {
   return db.one('INSERT INTO users(email, password) \
     VALUES($1, $2) RETURNING id',
@@ -20,15 +18,12 @@ let addBoard = (user_id) => {
         returning board_id ;`, [user_id])
 }
 
-let addImages = (image_id, image_url, description, location, size, type) => {
+let addImages = (board_id, image_id, image_url, description, location, size, type) => {
   return db.query(`
     INSERT INTO board_images (board_id, image_id, image_url, description, location, size, type) 
     values ($1, $2, $3, $4, $5, $6, $7) returning *;`, 
   [board_id, image_id, image_url, description, location, size, type])
 }
-
-
-
 
 // let retrieveUser = 
 

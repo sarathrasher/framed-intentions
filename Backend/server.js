@@ -44,11 +44,10 @@ let signup = (req, res) => {
 
 let addBoard = (req, res) => {
   let userBoard = req.body.userBoard;
-  // console.log(userBoard.typeOf())
-  console.log(userBoard)
   let user_id = req.body.userId;
   db.addBoard(user_id)
   .then((data) => {
+    let board_id = data[0].board_id;
     userBoard.map(image => {
       let image_id = image.id;
       let description = image.description;
@@ -56,9 +55,9 @@ let addBoard = (req, res) => {
       let location = image.location;
       let size = image.size;
       let type = image.type;
-      db.addImages(data, image_id, image_url, description, location, size, type)
+      db.addImages(board_id, image_id, image_url, description, location, size, type)
       .then((response) => 
-        res.send(response)
+        res.end(JSON.stringify(response))
       )
       .catch(err =>
         console.log(err)
