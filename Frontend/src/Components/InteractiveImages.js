@@ -20,7 +20,7 @@ class InteractiveImages extends React.Component {
 
   render() {
     return (
-      <InteractWrapper style={this.state.styles}
+      <InteractWrapper
       className='sidebar-image-container'
       draggable
       resizable
@@ -31,7 +31,7 @@ class InteractiveImages extends React.Component {
       ressizableOptions={resizableOptions}
       {...this.props}
       >
-      <img 
+      <img style={this.state.styles}
       className='sidebar-image'
       src={this.props.image.smallURL}
       alt={this.props.image.description}
