@@ -47,19 +47,27 @@ let addBoard = (req, res) => {
   // console.log(userBoard.typeOf())
   console.log(userBoard)
   let user_id = req.body.userId;
-  userBoard.map(image => {
-    let image_id = image.id;
-    let description = image.description;
-    let image_url = image.smallURL;
-    let location = image.location;
-    let size = image.size;
-    let type = image.type;
-    db.addBoard(user_id, image_id, image_url, description, location, size, type)
-      .then((contents) => {
-        res.end('Your board has been stored!');
-      })
-      .catch((err) => {console.log(err)});
+  db.addBoard(user_id)
+  .then((data) => {
+    userBoard.map(image => {
+      let image_id = image.id;
+      let description = image.description;
+      let image_url = image.smallURL;
+      let location = image.location;
+      let size = image.size;
+      let type = image.type;
+      db.addImages(data, image_id, image_url, description, location, size, type)
+      .then((response) => 
+        res.send(response)
+      )
+      .catch(err =>
+        console.log(err)
+      );
+    })
   })
+  .catch(err =>
+    console.log(err)
+  )
 }
 
 app.use(bodyParser.json());
