@@ -86,6 +86,16 @@
   flex-direction: column;
 }
 
+.login-form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
 .signup-form-container {
   display: flex;
   justify-content: center;

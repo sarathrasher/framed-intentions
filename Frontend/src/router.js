@@ -4,12 +4,13 @@ import HomeScreen from './Components/HomeScreen';
 import ImageSearchScreen from './Components/ImageSearchScreen';
 import CreationScreen from './Components/CreationScreen'
 import SignupScreen from './Components/SignupScreen';
+import LoginScreen from './Components/LoginScreen';
 
 let Router = () => 
   <HashRouter>
     <div>
       <Switch>
-        <Route exact path='/home' component={HomeScreen} />
+        <Route exact path='/' component={LoginScreen} />
         {/* <Route path='/login' component={LoginScreen}/> */}
         <Route path='/signup' component={SignupScreen}/>
         <Route exact path='/search/:query' component={ImageSearchScreen}/>

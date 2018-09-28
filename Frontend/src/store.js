@@ -4,6 +4,9 @@ import reducer from './Reducer/reducer'
 let initialState = {
   userToken: '',
   userBoard: [],
+  userId: '',
+  email: '',
+  saved: false,
 }
 
 let store = createStore(
