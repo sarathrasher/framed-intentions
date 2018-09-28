@@ -50,6 +50,7 @@
   border: 1px solid black;
   padding: 4vh;
   z-index: 0;
+  position: relative;
 }
 
 .sidebar-image-container {
