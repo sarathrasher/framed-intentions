@@ -42,6 +42,26 @@ let signup = (req, res) => {
     .catch(console.error)
 }
 
+let addBoard = (req, res) => {
+  let userBoard = req.body.userBoard;
+  // console.log(userBoard.typeOf())
+  console.log(userBoard)
+  let user_id = req.body.userId;
+  userBoard.map(image => {
+    let image_id = image.id;
+    let description = image.description;
+    let image_url = image.smallURL;
+    let location = image.location;
+    let size = image.size;
+    let type = image.type;
+    db.addBoard(user_id, image_id, image_url, description, location, size, type)
+      .then((contents) => {
+        res.end('Your board has been stored!');
+      })
+      .catch((err) => {console.log(err)});
+  })
+}
+
 app.use(bodyParser.json());
 
 app.use(express.static("../Frontend/build"));
@@ -51,5 +71,6 @@ app.use(publicRouter);
 publicRouter.post('/signup', signup);
 app.use('/api', authRouter);
 authRouter.get('/search/:query', fetchImages);
+authRouter.post('/add-board', addBoard)
 
 app.listen(3001);

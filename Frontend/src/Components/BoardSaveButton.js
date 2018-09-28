@@ -5,7 +5,7 @@ import CreationScreen from './CreationScreen'
 let boardSaveFetch = (props) =>
   fetch(`http://localhost:3001/api/add-board`, {
     method: 'POST',
-    body: JSON.stringify(props.userBoard),
+    body: JSON.stringify(props),
     headers:{
       "Content-Type": "application/json"
     }
@@ -21,12 +21,13 @@ let BoardSaveButton = (props) =>
   <button className='submit-button'
     onClick={ event => {
       event.preventDefault();
-      boardSaveFetch(props)
+      boardSaveFetch(props);
+      console.log(props);
       }
     }
     >Save Board
   </button>
 
-let SmartBoardSaveButton = connect(state => ({userBoard: state.userBoard, userToken: state.userToken}))(BoardSaveButton)
+let SmartBoardSaveButton = connect(state => ({userBoard: state.userBoard, userId: state.id}))(BoardSaveButton)
 export default SmartBoardSaveButton;
 
