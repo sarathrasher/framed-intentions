@@ -27,6 +27,6 @@ let BoardSaveButton = (props) =>
     >Save Board
   </button>
 
-let SmartBoardSaveButton = connect(state => ({userBoard: state.userBoard}))(BoardSaveButton)
+let SmartBoardSaveButton = connect(state => ({userBoard: state.userBoard, userToken: state.userToken}))(BoardSaveButton)
 export default SmartBoardSaveButton;
 

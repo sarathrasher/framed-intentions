@@ -8,7 +8,7 @@ const toggleFromUserBoard = (oldState, action) => {
   } else {
       return {
           ...oldState, 
-          userBoard: oldState.userBoard.concat([{...action.image, size: [150, 150]}])
+          userBoard: oldState.userBoard.concat([{...action.image, size: [150, 150], type: 'image'}])
       }
   }
 }
