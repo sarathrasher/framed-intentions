@@ -9,7 +9,7 @@ let Router = () =>
   <HashRouter>
     <div>
       <Switch>
-        <Route exact path='/home' component={HomeScreen} />
+        <Route exact path='/load-board/:user_id' component={HomeScreen} />
         {/* <Route path='/login' component={LoginScreen}/> */}
         <Route path='/signup' component={SignupScreen}/>
         <Route exact path='/search/:query' component={ImageSearchScreen}/>

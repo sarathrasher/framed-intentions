@@ -43,7 +43,6 @@ let signup = (req, res) => {
 }
 
 let addBoard = (req, res) => {
-  let userBoard = req.body.userBoard;
   let user_id = req.body.userId;
   db.addBoard(user_id)
   .then((data) => {
@@ -69,6 +68,25 @@ let addBoard = (req, res) => {
   )
 }
 
+let fetchUserBoard = (req, res) => {
+    let user_id = req.params.user_id;
+    db.getBoardId(user_id)
+    .then((data) => {
+      let board_id = data[0].board_id;
+      db.getBoardImages(board_id)
+        .then((response) => {
+          console.log(response)
+          res.end(JSON.stringify(response))
+          }
+        )
+        .catch(err =>
+          console.log(err))
+        })
+    .catch(err =>
+      console.log(err)
+    )
+}
+
 app.use(bodyParser.json());
 
 app.use(express.static("../Frontend/build"));
@@ -78,6 +96,7 @@ app.use(publicRouter);
 publicRouter.post('/signup', signup);
 app.use('/api', authRouter);
 authRouter.get('/search/:query', fetchImages);
-authRouter.post('/add-board', addBoard)
+authRouter.post('/add-board', addBoard);
+authRouter.get('/load-board/:user_id', fetchUserBoard)
 
 app.listen(3001);
