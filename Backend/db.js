@@ -34,9 +34,16 @@ let getBoardImages = (board_id) => {
 }
 // let retrieveUser = 
 
+let checkUserCreds = (email, password) => {
+  return db.one('SELECT * from users \
+    WHERE email = $1 AND password = $2', 
+    [email, password]);
+}
+
 
 module.exports = {
   addNewUser: addNewUser,
+  checkUserCreds: checkUserCreds,
   addBoard: addBoard,
   addImages: addImages,
   getBoardId: getBoardId,

@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 let SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
- class SignupForm extends Component {
+ class LoginForm extends Component {
   constructor (props) {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      error: ''
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -17,8 +19,8 @@ let SERVER_URL = process.env.REACT_APP_SERVER_URL;
     })
    }
   render () {
-    let addUserFetch = () => {
-      fetch(`${SERVER_URL}/signup`, {
+    let getUserInfoFetch = () => {
+      fetch(`${SERVER_URL}/login`, {
         method: 'POST',
         body: JSON.stringify(this.state),
         headers:{
@@ -28,37 +30,40 @@ let SERVER_URL = process.env.REACT_APP_SERVER_URL;
       .then(responseObj => 
         responseObj.json())
 
-      .then(data => {
+      .then(data => { 
+        if (data.token) {
         this.props.history.push('/create');
         window.localStorage.setItem('token', data.token);
         this.props.dispatch({
           type: 'STORE_USER_INFO',
           data: data,
-        })
+        }) 
+        } else {this.setState({error: data.error}) }
       })
     }
     return (
-      <form className="signup-form">
-        <p className="signup-text"> 
-          <h3 className="signup-account">
-            Sign-up for an Account:
+    <div>
+      <form className="loginu-form">
+        <p className="login-text"> 
+          <h3 className="login-account">
+            Login To Your Account:
         </h3>
         </p>
-         <label className="signup-account-email">
+         <label className="login-account-email">
           Email
         </label>
         <input type="text" 
-          className="signup-email-input" 
+          className="login-email-input" 
           placeholder="enter e-mail"
           name="email" 
           onChange={this.handleChange}
         />
         
-        <label className="signup-account-password">
+        <label className="login-account-password">
           Password
         </label>
         <input type="password"
-          className="signup-password-input"
+          className="login-password-input"
           placeholder="enter password"
           name="password" 
           onChange={this.handleChange}/>
@@ -66,13 +71,18 @@ let SERVER_URL = process.env.REACT_APP_SERVER_URL;
         <button type="Submit"
           onClick={(e)=>{
             e.preventDefault();
-            addUserFetch()
+            getUserInfoFetch()
           }
         }
           > Submit </button>
         
       </form>
+      <Link to="/signup">Not a User Yet? Sign Up </Link>
+      <br/>
+      <label> {this.state.error}
+      </label>
+    </div>
     );
   }
 }
- export default connect(state => state)(SignupForm); 
+ export default connect(state => state)(LoginForm); 
