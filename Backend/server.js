@@ -103,7 +103,6 @@ let fetchUserBoard = (req, res) => {
       let board_id = data[0].board_id;
       db.getBoardImages(board_id)
         .then((response) => {
-          console.log(response)
           res.end(JSON.stringify(response))
           }
         )

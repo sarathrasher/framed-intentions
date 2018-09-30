@@ -12,7 +12,6 @@ class HomeScreen extends React.Component {
   }
   fetchImages() {
     let user_id = this.props.match.params.user_id;
-    console.log(user_id);
     fetch(`${SERVER_URL}/api/load-board/${user_id}`, {
       method: "GET", 
       headers: {
@@ -20,7 +19,6 @@ class HomeScreen extends React.Component {
       },
     })
     .then(response => response.text())
-    // .then(data => console.log(data))
     .then(data => {
       this.setState({ userBoard: JSON.parse(data)}) ;
     })
@@ -38,7 +36,6 @@ class HomeScreen extends React.Component {
   }
  render() {
   if (this.state.userBoard.length > 0) {
-    console.log(this.state.userBoard)
     return (
       <div className='home-page'>
         <h1 className='title'>Framed Intentions</h1>
