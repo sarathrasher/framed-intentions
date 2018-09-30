@@ -20,8 +20,10 @@ class HomeScreen extends React.Component {
       },
     })
     .then(response => response.text())
-    .then(respone => console.log(respone))
-    .then(data => this.setState({ userBoard: data}))
+    // .then(data => console.log(data))
+    .then(data => {
+      this.setState({ userBoard: JSON.parse(data)}) ;
+    })
     .catch(err => console.log(err))
   }
 
@@ -36,6 +38,7 @@ class HomeScreen extends React.Component {
   }
  render() {
   if (this.state.userBoard.length > 0) {
+    console.log(this.state.userBoard)
     return (
       <div className='home-page'>
         <h1 className='title'>Framed Intentions</h1>

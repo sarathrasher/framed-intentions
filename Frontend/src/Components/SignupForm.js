@@ -39,12 +39,15 @@ let SERVER_URL = process.env.REACT_APP_SERVER_URL;
     }
     return (
       <form className="signup-form">
-        <p className="signup-text"> 
+        {/* <p className="signup-text"> 
           <h3 className="signup-account">
             Sign-up for an Account:
+          </h3>
+        </p> */}
+        <h3 className="signup-account">
+          Sign-up for an Account:
         </h3>
-        </p>
-         <label className="signup-account-email">
+        <label className="signup-account-email">
           Email
         </label>
         <input type="text" 

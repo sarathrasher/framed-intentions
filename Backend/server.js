@@ -70,6 +70,7 @@ let login = (req, res) => {
 
 let addBoard = (req, res) => {
   let user_id = req.body.userId;
+  let userBoard = req.body.userBoard;
   db.addBoard(user_id)
   .then((data) => {
     let board_id = data[0].board_id;
@@ -81,8 +82,9 @@ let addBoard = (req, res) => {
       let size = image.size;
       let type = image.type;
       db.addImages(board_id, image_id, image_url, description, location, size, type)
-      .then((response) => 
+      .then((response) => {
         res.end(JSON.stringify(response))
+      }
       )
       .catch(err =>
         console.log(err)

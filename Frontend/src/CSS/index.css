@@ -4,6 +4,7 @@
   font-family: Open Sans;
   box-sizing: border-box;
   font-size: 15px;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .search-board-container {
@@ -16,6 +17,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .search-images-board {
@@ -49,6 +51,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: 'Shadows Into Light', cursive;
 }
 
 .board {
@@ -59,6 +62,7 @@
   padding: 4vh;
   z-index: 0;
   position: relative;
+  background-color: white;
 }
 
 .sidebar-image-container {
@@ -84,6 +88,7 @@
 .creation-main {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .login-form-container {
@@ -115,6 +120,10 @@ button {
   padding: 0;
 }
 
+.input-field {
+  padding: 0.5em;
+}
+
 @media (min-width: 625px) {
   .board {
     margin: 1em auto 1em auto;
@@ -144,11 +153,12 @@ button {
 @media (min-width: 1024px) {
   .creation-main {
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
   }
   .sidebar-image {
     margin: 0;
     padding: 0;
+
   }
   .side-bar {
     width: 60vh;
