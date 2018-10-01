@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBarFormContainer from './SearchBarFormContainer';
 import SearchBoardTemplate from './SearchBoardTemplate';
+import SmartNavBar from './Navigation';
 
 let SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
@@ -39,12 +40,23 @@ class ImageSearchScreen extends React.Component {
  render() {
   if (this.state.imageSearchResults.length > 0) {
     return (
-      <div className='image-search-screen'>
-        <SearchBarFormContainer history={this.props.history}/>
-        <SearchBoardTemplate images={this.state.imageSearchResults} />
+      <div>
+        <SmartNavBar />
+        <div className='image-search-screen'>
+          <SearchBarFormContainer history={this.props.history}/>
+          <SearchBoardTemplate images={this.state.imageSearchResults} />
+        </div>
       </div>)
   } else {
-    return null
+    return (
+      <div>
+        <SmartNavBar />
+        <div className='image-search-screen'>
+          <SearchBarFormContainer history={this.props.history}/>
+          <p style={{fontFamily: 'Shadows Into Light, cursive'}}>Woops! No results for that search</p>
+        </div>
+      </div>
+    )
   }
  }
 }

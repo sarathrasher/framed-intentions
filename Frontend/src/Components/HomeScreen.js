@@ -1,6 +1,7 @@
 import React from 'react';
 import BoardTemplate from './BoardTemplate';
 import SearchBarFormContainer from './SearchBarFormContainer';
+import SmartNavBar from './Navigation';
 let SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 class HomeScreen extends React.Component {
@@ -37,16 +38,22 @@ class HomeScreen extends React.Component {
  render() {
   if (this.state.userBoard.length > 0) {
     return (
-      <div className='home-page'>
-        <h1 className='title'>Framed Intentions</h1>
-        <SearchBarFormContainer history={this.props.history}/>
-        <BoardTemplate userBoard={this.state.userBoard}/>
+      <div>
+        <SmartNavBar />
+        <div className='home-page'>
+          <h1 className='title'>Framed Intentions</h1>
+          <SearchBarFormContainer history={this.props.history}/>
+          <BoardTemplate userBoard={this.state.userBoard}/>
+        </div>
       </div>)
   } else {
     return (
-      <div className='home-page'>
-        <h1 className='title'>Framed Intentions</h1>
-        <SearchBarFormContainer history={this.props.history}/>
+      <div>
+        <SmartNavBar />
+        <div className='home-page'>
+          <h1 className='title'>Framed Intentions</h1>
+          <SearchBarFormContainer history={this.props.history}/>
+        </div>
       </div>)
   }
  }
