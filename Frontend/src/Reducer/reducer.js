@@ -48,7 +48,7 @@ let storeUserInfo = (oldState, action) => {
   return {
     ...oldState, 
     email: action.data.email,
-    id: action.data.id
+    userId: action.data.id
   }
 }
 

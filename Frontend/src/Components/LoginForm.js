@@ -43,12 +43,12 @@ let SERVER_URL = process.env.REACT_APP_SERVER_URL;
     }
     return (
     <div>
-      <form className="loginu-form">
-        <p className="login-text"> 
+      <form className="login-form">
+        <div className="login-text"> 
           <h3 className="login-account">
             Login To Your Account:
-        </h3>
-        </p>
+          </h3>
+        </div>
          <label className="login-account-email">
           Email
         </label>

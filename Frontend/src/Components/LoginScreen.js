@@ -9,4 +9,4 @@ import LoginForm from './LoginForm';
     </div>
   </div>
 )
- export default LoginForm; 
+ export default LoginScreen; 
