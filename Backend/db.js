@@ -25,6 +25,15 @@ let addImages = (board_id, image_id, image_url, description, location, size, typ
   [board_id, image_id, image_url, description, location, size, type])
 }
 
+let getBoardId = (user_id) => {
+  return db.query('SELECT board_id from user_boards WHERE user_boards.user_id = $1', [user_id])
+}
+
+let getBoardImages = (board_id) => {
+  return db.query('SELECT * FROM board_images WHERE board_images.board_id = $1', [board_id])
+}
+// let retrieveUser = 
+
 let checkUserCreds = (email, password) => {
   return db.one('SELECT * from users \
     WHERE email = $1 AND password = $2', 
@@ -36,7 +45,9 @@ module.exports = {
   addNewUser: addNewUser,
   checkUserCreds: checkUserCreds,
   addBoard: addBoard,
-  addImages: addImages
+  addImages: addImages,
+  getBoardId: getBoardId,
+  getBoardImages: getBoardImages
 };
 
 // addNewUser('hello@world.com', 'password')

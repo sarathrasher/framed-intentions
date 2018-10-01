@@ -18,7 +18,7 @@ let boardSaveFetch = (props) =>
   )
 
 let BoardSaveButton = (props) =>
-  <button className='submit-button'
+  <button className='submit-button btn btn-danger'
     onClick={ event => {
       event.preventDefault();
       boardSaveFetch(props);
